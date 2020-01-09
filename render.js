@@ -1,6 +1,27 @@
+
+// const textElement = {
+//     type: "span",
+//     props: {
+//       children: [
+//         {
+//           type: "TEXT ELEMENT", // 1
+//           props: { nodeValue: "Foo" } // 2
+//         }
+//       ]
+//     }
+//   };
+
+
+
 function render(element, parentDom) {
     const { type, props } = element;
-    const dom = document.createElement(type)
+
+
+    const isTextElement = type === 'TEXT ELEMENT'
+    const dom = isTextElement ? document.createTextNode('') : document.createElement(type)
+
+
+
 
 
     const isListener = name => name.startsWith('on')
