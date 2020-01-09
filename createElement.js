@@ -30,10 +30,20 @@
 //     </div>
 //   );
 
+
+const TEXT_ELEMENT = 'TEXT ELEMENT'
+
+
 function createElement(type, config, ...args) {
     const props = Object.assign({}, config)
 
     const hasChildren = args.length > 0
-    props.children = hasChildren ? [].concat(...args) : []
+    const rawChildren = hasChildren ? [].concat(...args) : []
+
+    props.children = rawChildren.filter(item => item !== null && item !== false).map(item => item instanceof Object ? item : createTextElement(item))
     return { type, props }
+}
+
+function createTextElement(value) {
+    return createElement(TEXT_ELEMENT, { nodeValue: value })
 }
