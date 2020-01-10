@@ -1,17 +1,8 @@
+import updateDomProperties from './updateDomProperties'
+
 /**
  * 
- * @param {*} element 
- * const textElement = {
- *   type: "span",
-    props: {
-      children: [
-        {
-          type: "TEXT ELEMENT", // 1
-          props: { nodeValue: "Foo" } // 2
-        }
-      ]
-    }
-  }
+ * @param {VNode} element 
  */
 
 function instantiate(element) {
@@ -19,16 +10,7 @@ function instantiate(element) {
   const isTextElement = type === 'TEXT ELEMENT'
   const dom = isTextElement ? document.createTextNode('') : document.createElement(type)
 
-  const isListener = name => name.startsWith('on')
-  Object.keys(props).filter(isListener).forEach(name => {
-    const eventType = name.toLocaleLowerCase().substring(2)
-    dom.addEventListener(eventType, props[name])
-  })
-
-  const isAttribute = name => !isListener(name) && name != "children";
-  Object.keys(props).filter(isAttribute).forEach(name => {
-    dom[name] = props[name]
-  })
+  updateDomProperties(dom, {}, props)
 
   const childElements = props.children || []
   const childInstances = childElements.map(instantiate)
