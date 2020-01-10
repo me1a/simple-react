@@ -5,7 +5,7 @@ export default function updateDomProperties(dom, prevProps, nextProps) {
     Object.keys(prevProps).filter(isEvent).forEach(name => {
 
         const eventType = name.toLocaleLowerCase().substring(2)
-        DOMError.removeEventListener(eventType, prevProps[name])
+        dom.removeEventListener(eventType, prevProps[name])
     })
 
     Object.keys(prevProps).filter(isAttribute).forEach(name => {
