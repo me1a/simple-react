@@ -4,12 +4,14 @@
   "description": "",
   "main": "didact.js",
   "dependencies": {
-    "webpack-cli": "^3.3.10",
-    "webpack": "^4.41.5"
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "keywords": [],
   "author": "",
