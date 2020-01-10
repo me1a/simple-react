@@ -11,7 +11,6 @@ function reconcile(parentDom, instance, element) {
         return null
     } else if (instance.element.type === element.type) {
         updateDomProperties(instance.dom, instance.element.props, element.props)
-
         instance.childInstances = reconcileChildren(instance, element)
         instance.element = element
         return instance
@@ -26,7 +25,7 @@ function reconcileChildren(instance, element) {
     const dom = instance.dom
     const childInstances = instance.childInstances
 
-    const nextChildElements = instance.props.children || []
+    const nextChildElements = element.props.children || []
     const newChildInstances = []
 
     const count = Math.max(childInstances.length, nextChildElements.length)

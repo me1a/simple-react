@@ -1,6 +1,6 @@
 export default function updateDomProperties(dom, prevProps, nextProps) {
     const isEvent = name => name.startsWith('on')
-    const isAttribute = name => isEvent(name) && name !== 'children'
+    const isAttribute = name => !isEvent(name) && name !== 'children'
 
     Object.keys(prevProps).filter(isEvent).forEach(name => {
 
