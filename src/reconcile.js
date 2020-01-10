@@ -6,7 +6,10 @@ function reconcile(parentDom, instance, element) {
         const newInstance = instantiate(element)
         parentDom.appendChild(newInstance.dom)
         return newInstance
-    } else if (instance.element.type === element.types) {
+    } else if (element === null) {
+        parentDom.removeChild(instance.dom)
+        return null
+    } else if (instance.element.type === element.type) {
         updateDomProperties(instance.dom, instance.element.props, element.props)
 
         instance.childInstances = reconcileChildren(instance, element)
@@ -35,7 +38,7 @@ function reconcileChildren(instance, element) {
         newChildInstances.push(newChildInstance)
     }
 
-    return newChildInstances
+    return newChildInstances.filter(instance => instance !== null)
 }
 
 export default reconcile
