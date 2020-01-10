@@ -1,3 +1,5 @@
+import instantiate from './instantiate'
+
 function reconcile(parentDom, instance, element) {
     if (instance === null) {
         const newInstance = instantiate(element)
@@ -9,3 +11,5 @@ function reconcile(parentDom, instance, element) {
         return newInstance
     }
 }
+
+export default reconcile

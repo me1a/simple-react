@@ -1,3 +1,4 @@
+import reconcile from './reconcile'
 let rootInstance = null
 function render(element, container) {
     const prevInstance = rootInstance
@@ -5,3 +6,4 @@ function render(element, container) {
     rootInstance = nextInstance
 }
 
+export default render
