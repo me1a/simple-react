@@ -3,7 +3,7 @@ import instantiate from './instantiate'
 function reconcile(parentDom, instance, element) {
     if (instance === null) {
         const newInstance = instantiate(element)
-        parentDom.appendChild(newInstance)
+        parentDom.appendChild(newInstance.dom)
         return newInstance
     } else {
         const newInstance = instantiate(element)
