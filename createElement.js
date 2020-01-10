@@ -34,11 +34,11 @@
 const TEXT_ELEMENT = 'TEXT ELEMENT'
 
 
-function createElement(type, config, ...args) {
+function createElement(type, config, ...children) {
     const props = Object.assign({}, config)
 
-    const hasChildren = args.length > 0
-    const rawChildren = hasChildren ? [].concat(...args) : []
+    const hasChildren = children.length > 0
+    const rawChildren = hasChildren ? [].concat(...children) : []
 
     props.children = rawChildren.filter(item => item !== null && item !== false).map(item => item instanceof Object ? item : createTextElement(item))
     return { type, props }
