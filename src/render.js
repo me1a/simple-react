@@ -24,3 +24,5 @@ function render(vNode, parentDom) {
 
     parentDom.appendChild(dom)
 }
+
+export default render
