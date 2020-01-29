@@ -3,7 +3,7 @@ import instanceCreate from './instance'
 function reconcile(parentDom, instance, element) {
     if (instance === null) {
         const newInstance = instanceCreate(element)
-        parentDom.appendChild(newInstance)
+        parentDom.appendChild(newInstance.dom)
         return newInstance
     } else {
         const newInstance = instanceCreate(element)
@@ -11,3 +11,4 @@ function reconcile(parentDom, instance, element) {
         return newInstance
     }
 }
+export default reconcile

@@ -7,7 +7,7 @@ function instantiate(element) {
     updateDomProperties(dom, {}, props)
 
     const childElements = props.children || []
-    const childInstances = childElements.map(child => instantiate)
+    const childInstances = childElements.map(child => instantiate(child))
     const childDoms = childInstances.map(child => child.dom)
 
     childDoms.forEach(child => dom.appendChild(child))
