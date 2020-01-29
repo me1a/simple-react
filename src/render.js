@@ -1,7 +1,8 @@
 function render(vNode, parentDom) {
 
     const { type, props } = vNode
-    const dom = document.createElement(type)
+    const isTextElement = type === 'TEXT ELEMENT'
+    const dom = isTextElement ? document.createTextNode('') : document.createElement(type)
 
 
     const isListener = name => name.startsWith('on')
