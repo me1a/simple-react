@@ -7,7 +7,7 @@ function createElement(type, config, ...args) {
     props.children = children
         .filter(item => item !== null && item !== false)
         .map(child => {
-            child instanceof Object ? child : createTextElement(child)
+            return child instanceof Object ? child : createTextElement(child)
         })
     return { type, props }
 }

@@ -11,7 +11,7 @@ function render(vNode, parentDom) {
         if (isListener(prop)) {
             const eventType = prop.toLowerCase().substring(2)
             dom.addEventListener(eventType, props[prop])
-        } else if (isAttribute) {
+        } else if (isAttribute(prop)) {
             dom[prop] = props[prop]
         } else {
             // 递归将 vNode 转化为真实dom
