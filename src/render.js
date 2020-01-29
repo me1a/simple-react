@@ -1,9 +1,9 @@
-import reconcile from './reconcile'
-let rootInstance = null
-function render(element, container) {
-    const prevInstance = rootInstance
-    const nextInstance = reconcile(container, prevInstance, element)
-    rootInstance = nextInstance
-}
+function render(vNode, parentDom) {
 
-export default render
+    const { type, props } = vNode
+    const dom = document.createElement(type)
+    // 递归将 vNode 转化为真实dom
+    const children = props.children || []
+    children.forEach(child => render(child, dom))
+    parentDom.appendChild(dom)
+}
