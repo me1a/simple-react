@@ -5,25 +5,25 @@ import render from './render'
 
 let i = 0
 
-let app = <div>
-    <h1 onClick={click}>app</h1>
-    <h1>app{i}</h1>
-</div>
 
-function click() {
-    i++
-    console.log(i)
-    app = <div title={i}>
+function createApp(i) {
+    return <div title={i}>
         <h1 onClick={click}>app</h1>
         <h1 title={i}>app</h1>
     </div>
-    render(app, document.querySelector('#app'))
 }
 
 console.log(app)
 
+function click() {
+    i++
+    console.log(i)
+    render(createApp(i), document.querySelector('#app'))
+}
 
-render(app, document.querySelector('#app'))
+
+
+render(createApp(i), document.querySelector('#app'))
 
 // setInterval(() => {
 //     i++
